@@ -19,7 +19,7 @@ const BirthdayWishPage = ({ onNext, name }) => {
         transition={{ duration: 1, type: "spring" }}
       >
         <h1 style={{ fontSize: '4rem', color: '#ff4d6d', textShadow: '0 0 20px rgba(255, 255, 255, 0.8)' }}>
-          🎉 Happy Birthday {name} 🎉
+          🎉 Happy Birthday Dhanushya 🎉
         </h1>
         <p style={{ fontSize: '1.5rem', color: '#c9184a', marginTop: '20px' }}>
           Today is all about YOU! 🎂✨

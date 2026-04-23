@@ -26,10 +26,10 @@ const NoticePage = ({ onNext, updateData }) => {
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
       >
-        <h2 style={{ color: '#ff4d6d', marginBottom: '20px' }}>📋 Important Notice!</h2>
+        <h2 style={{ color: '#ff4d6d', marginBottom: '20px' }}>📋Disclaimer!</h2>
         <p style={{ color: '#c9184a', marginBottom: '20px', fontSize: '1.1rem' }}>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum deleniti harum sapiente nisi inventore eum facilis modi pariatur, explicabo cumque porro fugit, totam accusantium sit vel qui sed quod voluptate molestias architecto itaque! Nesciunt optio praesentium, ullam beatae totam voluptatem perspiciatis molestiae ipsa iure dicta eveniet aliquid iste cum facere. 💖
-        </p>
+            This is to inform you 📢 that I am using your picture 🖼️ <br />for a surprise 🎁 purpose. So I took your pic 📸 screenshot from your Instagram highlights without your permission 🙈. So sorry about that 🙏. The picture will be deleted 🗑️ after surprising you 🎉. Thank you 😊🙏
+            </p>
         
         <button className="glow-button" onClick={handleDone}>
           Done ✨

@@ -18,7 +18,24 @@ const SpecialNotePage = ({ onNext }) => {
           whiteSpace: 'pre-line',
           marginBottom: '40px' 
         }}>
-          ""
+          "Hii 👋 Happy Birthday 🎂🎉
+First thanks 🙏 for enakku support pannathuku 🤝, and enna happy aakunathuku 😊💫... athuku romba thanks ❤️
+
+Unnala naa happy ah irruntha 😄, nee naa thaniya irrukumpothu enakku support ah irrunthu irruka 🤍… ini irrupiya nu therla , so thanks for that 🙏✨
+
+And sorry 😔 if naa unna disturb or hurt panni irruntha 💔, I’m so sorry 🙏
+
+Eppothumey nee un life la happy ah irru 😄✨, life ah enjoy pannu 🎈🎶, yaaru life la ethir paakatha, bold ah irru 💪, strong ah irru 🛡️
+
+Nee un frds 👯‍♀️ and family 👨‍👩‍👧 oda happy ah irru ❤️🏡
+Career la focus ah irru 📚🎯
+
+Unakku enna help venunalu kelu 🤝, naa unakku help panren 🙋‍♂️
+
+Intha gift 🎁 and note 📝 cring ah irrukala 😅, but ennaku thonuchu solliten 🤭
+Intha gift unakku pudikkum nu namburen 😊💖
+
+HAPPY BIRTHDAY AGAIN 🎂🎉✨ "
         </p>
         <button className="glow-button" onClick={onNext}>
           Next 🌈
