@@ -2,12 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const images = [
-  'https://picsum.photos/id/102/800/1200',
-  'https://picsum.photos/id/103/800/1200',
-  'https://picsum.photos/id/104/800/1200',
-  'https://picsum.photos/id/106/800/1200',
-  'https://picsum.photos/id/107/800/1200',
-  'https://picsum.photos/id/108/800/1200',
+  "/images/photo1.wepg",
+  "/images/photo2.jpeg",
+  "/images/photo3.jpeg",
+  "/images/photo4.jpeg",
+  "/images/photo5.jpg",
+  "/images/photo6.jpg",
 ];
 
 const SlideshowPage = ({ onNext }) => {
