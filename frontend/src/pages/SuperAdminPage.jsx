@@ -148,12 +148,25 @@ const SuperAdminPage = () => {
           </div>
 
           {/* Selected Cards */}
-          <Section icon="🍭" title="Selected Candy Cards" accent="#ff4d6d">
+          <Section icon="📸" title="Selected Cards / Memories" accent="#ff4d6d">
             {data.selectedCards.length === 0
               ? <p className="admin-empty">No cards selected yet.</p>
               : data.selectedCards.map((entry, i) => (
                 <div key={i} className="admin-row">
-                  <span className="admin-row-icons">{entry.cards.join('  ')}</span>
+                  <div className="admin-row-content">
+                    {entry.cards.map((card, cardIdx) => (
+                      card.startsWith('/images') || card.includes('WhatsApp') ? (
+                        <img 
+                          key={cardIdx} 
+                          src={card} 
+                          alt="Selected Card" 
+                          className="admin-card-thumb" 
+                        />
+                      ) : (
+                        <span key={cardIdx} className="admin-emoji">{card}</span>
+                      )
+                    ))}
+                  </div>
                   <span className="admin-row-time">{fmt(entry.timestamp)}</span>
                 </div>
               ))
@@ -356,14 +369,29 @@ const SuperAdminPage = () => {
           justify-content: space-between;
           align-items: center;
           flex-wrap: wrap;
-          gap: 0.5rem;
+          gap: 1rem;
           padding: 0.7rem 1rem;
           background: rgba(255,255,255,0.05);
-          border-radius: 10px;
-          margin-bottom: 0.5rem;
+          border-radius: 12px;
+          margin-bottom: 0.75rem;
           font-size: 0.95rem;
         }
-        .admin-row-icons { font-size: 1.4rem; letter-spacing: 4px; }
+        .admin-row-content {
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;
+        }
+        .admin-card-thumb {
+          width: 50px;
+          height: 50px;
+          object-fit: cover;
+          border-radius: 8px;
+          border: 1.5px solid rgba(255,255,255,0.2);
+        }
+        .admin-emoji {
+          font-size: 1.4rem;
+          margin-right: 4px;
+        }
         .admin-row-time { font-size: 0.75rem; color: rgba(255,255,255,0.4); white-space: nowrap; }
         .admin-note-card {
           background: rgba(168,85,247,0.1);
