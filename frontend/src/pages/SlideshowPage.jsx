@@ -2,12 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const images = [
-  "/images/photo1.wepg",
+  "/images/photo1.jpeg",
   "/images/photo2.jpeg",
   "/images/photo3.jpeg",
   "/images/photo4.jpeg",
-  "/images/photo5.jpg",
-  "/images/photo6.jpg",
+  "/images/photo5.jpeg",
+  "/images/photo6.jpeg",
 ];
 
 const SlideshowPage = ({ onNext }) => {

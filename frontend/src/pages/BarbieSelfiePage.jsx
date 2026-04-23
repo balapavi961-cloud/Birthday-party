@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Webcam from 'react-webcam';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
@@ -24,7 +24,23 @@ const BarbieSelfiePage = ({ onNext }) => {
   const [capturedCards, setCapturedCards] = useState([]);
   const [showFlash, setShowFlash] = useState(false);
 
+  const shutterSound = useRef(new Audio('https://www.orangefreesounds.com/wp-content/uploads/2019/03/Camera-click-sound.mp3'));
+
+  useEffect(() => {
+    if (shutterSound.current) {
+      shutterSound.current.load();
+    }
+  }, []);
+
   const capture = useCallback(() => {
+    // Play shutter sound
+    if (shutterSound.current) {
+      shutterSound.current.currentTime = 0;
+      shutterSound.current.play()
+        .then(() => console.log("Shutter sound played!"))
+        .catch(err => console.error("Shutter sound failed:", err));
+    }
+
     setShowFlash(true);
     setTimeout(() => setShowFlash(false), 150);
     const barbie = getRandomBarbie();
