@@ -6,7 +6,17 @@ const FinalCardsPage = ({ onNext, updateData }) => {
   const [isSending, setIsSending] = useState(false);
   const [isSent, setIsSent] = useState(false);
 
-  const icons = ['🍭', '🍬', '🍫', '🍩', '🧁', '🍦', '🍰', '🍪', '🍨'];
+  const images = [
+    "/images/WhatsApp Image 2026-04-23 at 5.05.06 PM (1).jpeg",
+    "/images/WhatsApp Image 2026-04-23 at 5.05.06 PM.jpeg",
+    "/images/WhatsApp Image 2026-04-23 at 5.05.07 PM (1).jpeg",
+    "/images/WhatsApp Image 2026-04-23 at 5.05.07 PM (2).jpeg",
+    "/images/WhatsApp Image 2026-04-23 at 5.05.07 PM.jpeg",
+    "/images/WhatsApp Image 2026-04-23 at 5.05.08 PM (1).jpeg",
+    "/images/WhatsApp Image 2026-04-23 at 5.05.08 PM (2).jpeg",
+    "/images/WhatsApp Image 2026-04-23 at 5.05.08 PM.jpeg",
+    "/images/WhatsApp Image 2026-04-23 at 5.05.09 PM.jpeg"
+  ];
 
   const toggleSelect = (idx) => {
     if (selected.includes(idx)) {
@@ -18,22 +28,22 @@ const FinalCardsPage = ({ onNext, updateData }) => {
 
   const handleSend = async () => {
     setIsSending(true);
-    const selectedCardIcons = selected.map(i => icons[i]);
-    updateData({ selectedCards: selectedCardIcons });
+    const selectedCardImages = selected.map(i => images[i]);
+    updateData({ selectedCards: selectedCardImages });
 
     try {
       // 1. Store selected cards
       await fetch('http://localhost:5000/api/selected-cards', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ cards: selectedCardIcons })
+        body: JSON.stringify({ cards: selectedCardImages })
       });
 
       // 2. Send email
       await fetch('http://localhost:5000/api/send-mail', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ cards: selectedCardIcons, message: "A surprise birthday reveal!" })
+        body: JSON.stringify({ cards: selectedCardImages, message: "A surprise birthday reveal!" })
       });
 
       setIsSent(true);
@@ -48,10 +58,18 @@ const FinalCardsPage = ({ onNext, updateData }) => {
   return (
     <div className="page-container">
       <h2 style={{ color: '#ff4d6d', marginBottom: '10px' }}>The Final Selection 🌈</h2>
-      <p style={{ color: '#c9184a', marginBottom: '30px' }}>Choose your 3 favorite treats to send a surprise! ✨</p>
+      <p style={{ color: '#c9184a', marginBottom: '30px' }}>Choose your 3 favorite memories to send a surprise! ✨</p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '15px', maxWidth: '400px', margin: '0 auto 40px' }}>
-        {icons.map((icon, idx) => {
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))', 
+        gap: '15px', 
+        width: '100%',
+        maxWidth: '500px', 
+        margin: '0 auto 40px',
+        padding: '0 20px'
+      }}>
+        {images.map((img, idx) => {
           const isSelected = selected.includes(idx);
           const isFaded = selected.length === 3 && !isSelected;
           
@@ -61,22 +79,23 @@ const FinalCardsPage = ({ onNext, updateData }) => {
               onClick={() => toggleSelect(idx)}
               animate={{ 
                 opacity: isFaded ? 0.3 : 1,
-                scale: isSelected ? 1.1 : 1,
-                borderColor: isSelected ? '#ff4d6d' : 'white'
+                scale: isSelected ? 1.05 : 1,
+                borderColor: isSelected ? '#ff4d6d' : 'transparent'
               }}
               className="glass-card"
               style={{ 
-                height: '100px', 
+                height: '120px', 
                 display: 'flex', 
                 alignItems: 'center', 
                 justifyContent: 'center', 
-                fontSize: '2.5rem',
                 cursor: 'pointer',
-                border: isSelected ? '4px solid' : '2px solid white',
-                borderRadius: '15px'
+                border: isSelected ? '4px solid' : '2px solid rgba(255, 255, 255, 0.5)',
+                borderRadius: '15px',
+                overflow: 'hidden',
+                padding: '0'
               }}
             >
-              {icon}
+              <img src={img} alt={`Memory ${idx + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </motion.div>
           );
         })}
